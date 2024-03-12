@@ -13,29 +13,37 @@ Com o CD-ROM baixado e descompactado, abra a pasta Demonstrations/SOC_FPGA/my_fi
 
 Após a abertura da pasta fpga-rtl abra o projeto no seu Quartus, e com o Quartus aberto faça a atualização de IPs que ele recomenda.
 
-![[ip-att.png]]
+<div align="center">
+
+<img src="ip-att.png">
+
+ </div>
 
 Após a finalização da atualização, abra o plataform desiner e o arquivo soc_system.qsys.
 
-![[soc_system_plataform.png]]
+<div align="center">
+	
+<img src="soc_system_plataform.png">
+
+ </div>
 
 Com o arquivo aberto, clique no componente pio_led e exclua ele.
 
-![[pio_led.png]]
+<img src="pio_led.png">
 
 Com esses passos realizados, vá na barra de pesquisa do IP Catalog e procure por PIO(Parallel I/O) Intel FPGA IP e dê um clique duplo no IP, em Width escolha 8 bits e em direction selecione a opção Output. Clique em finish.
 
-![[pio_reg1.png]]
+<img src="pio_reg1.png">
 
 Repita esse processo outras duas vezes, mas no ultimo PIO selecione a opção input. Com todos os PIOs instanciados faça as conexões necessárias: clk em clk do clk_0, reset em clk_reset do clk_0 e s1 em h2f_lw_axi_master do hps_0.
 
-![[regs_instanciados.png]]
+<img src="regs_instanciados.png">
 
 Com todas as conexões realizadas, chegou a hora de alocar a memoria. Na área Base de cada PIO mude os valores para 0x0000_0010 em pio_0, 0x0000_0020 em pio_1 e 0x0000_0030 em pio_2. A disposição dos valores fica a critério do leitor, mas é recomendado sequencia-las para evitar problemas futuros.
 
 Por ultimo, em cada PIO, clique com o botão direito na conexão do external_connection. Vá em connections: pio_0.external_connection e clique em Export as. 
 
-![[qsys_pronto.png]]
+<img src="qsys_pronto.png">
 
 Clique em Finish. Clique em Yes, quando questionado se deseja gerar o novo arquivo. Clique em generate e, logo após, clique em finish.
 
@@ -253,25 +261,14 @@ Por ultimo, é necessario alterar o makefile existente para o seguinte
 ```
 TARGET = my_first_hps-fpga
 
-  
-
 ALT_DEVICE_FAMILY = soc_cv_av
-
 SOCEDS_ROOT = /intelFPGA/18.1/embedded
-
 HWLIBS_ROOT = $(SOCEDS_ROOT)/ip/altera/hps/altera_hps/hwlib
 
-  
-
 SOCEDS_DEST_ROOT=/intelFPGA/18.1/embedded/ip/altera/hps/altera_hps/hwlib
-
 IP_DEST_ROOT=/intelFPGA/18.1/embedded
 
-  
-
 HWLIBS_SRC  := ${SOCEDS_DEST_ROOT}/src/hwmgr/alt_dma.o ${SOCEDS_DEST_ROOT}/src/hwmgr/alt_dma_program.o ${SOCEDS_DEST_ROOT}/src/hwmgr/alt_globaltmr.o
-
-  
 
 CROSS_COMPILE = arm-linux-gnueabihf-
 
@@ -280,29 +277,17 @@ CFLAGS = -static -g -Wall -std=c99 -D_POSIX_C_SOURCE=199309L -I${SOCEDS_DEST_ROO
   
 
 LDFLAGS =  -g -Wall  
-
 CC = $(CROSS_COMPILE)gcc
-
 ARCH= arm
-
   
-
 all: $(TARGET)
-
 $(TARGET): main.o $(HWLIBS_SRC)
-
     $(CC) $(LDFLAGS)   $^ -o $@  
-
 %.o : %.c
-
     $(CC) $(CFLAGS) -c $< -o $@
-
-  
-
 .PHONY: clean
 
 clean:
-
     rm -f $(TARGET) *.a *.o *~
 ```
 
