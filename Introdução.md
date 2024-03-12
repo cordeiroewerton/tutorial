@@ -301,3 +301,5 @@ Com isso, será gerado um arquivo binário chamado "my_first_hps-fpga". Transfir
 root@de1soclinux:~/Desktop# ./my_first_hps-fpga
 Adder result: 3 + 2 = 5
 ```
+Com isso, você está capacitado a fazer implementações utilizando a ponte HPS-FPGA. Vale lembrar que isso é apenas um simples exemplo, mas ele abre porta para vários projetos com uma complexidade bem maior.
+
