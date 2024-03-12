@@ -11,7 +11,7 @@ O tutorial é dividido em duas partes: design de hardware e implementação de s
 
 Com o CD-ROM baixado e descompactado, abra a pasta Demonstrations/SOC_FPGA/my_first_hps-fpga. Quando a\pasta estiver aberta será possível encontrar duas outras pastas; fpga-rtl e hps-c. Neste primeiro instante focaremos no fpga-rtl. O projeto em questão é um demonstração disponibilizado pela intel que objetiva praticar os conhecimentos da ponte HPS-FPGA. 
 
-Após a abertura da pasta fpga-rtl abra o projeto no seu Quartus, e com o Quartus aberto faça a atualização de IPs que ele recomenda.
+Após a abertura da pasta fpga-rtl abra o projeto no seu Quartus, e com ele aberto faça a atualização de IPs que ele recomenda.
 
 <div align="center">
 
@@ -19,7 +19,7 @@ Após a abertura da pasta fpga-rtl abra o projeto no seu Quartus, e com o Quartu
 
  </div>
 
-Após a finalização da atualização, abra o plataform desiner e o arquivo soc_system.qsys.
+Após a finalização da atualização, abra o plataform designer e o arquivo soc_system.qsys.
 
 <div align="center">
 	
@@ -49,7 +49,7 @@ Clique em Finish. Clique em Yes, quando questionado se deseja gerar o novo arqui
 
 Quando o arquivo for gerado adicione o novo arquivo ao seu projeto do Quartus. Geralmente o arquivo pode ser encontrado em: soc_system/synthesis/soc_system.qip.
 
-Com o arquivo de IPs pronto, está na hora de mudar a estrutura do seu projeto. Primeiro, crie variáveis para o seu somador e na instancia do seu soc_system faça as conexões necessárias para o seu novo design. O seu código deve ficar parecido com algo do gênero:
+Com o arquivo de IPs pronto, está na hora de mudar a estrutura do seu projeto. Primeiro, crie variáveis para o seu somador e na instância do seu soc_system faça as conexões necessárias para o seu novo design. O seu código deve ficar parecido com algo do gênero:
 
 ```
 wire        hps_debug_reset;
@@ -302,4 +302,17 @@ root@de1soclinux:~/Desktop# ./my_first_hps-fpga
 Adder result: 3 + 2 = 5
 ```
 Com isso, você está capacitado a fazer implementações utilizando a ponte HPS-FPGA. Vale lembrar que foi tratado de apenas um simples somador, mas esse design abre porta para a implementação de vários projetos de maior complexidade.
+
+# Anexo
+
+
+Link para o CD-ROM: https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=836&PartNo=4
+
+Link download do Linux para o SOC: https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&No=836&PartNo=4
+
+Para aprender a configurar a placa no modo linux leia os seguintes manuais: DE1-SoC_User_manual, My_First_HPS e DE1-SoC_Getting_Started_Guide.
+
+E-mail para contato: jose.cordeiro@ee.ufcg.edu.br
+
+
 
